@@ -3,63 +3,66 @@
 using namespace std;
 
 
-/*
- * Город содержит целое поле – число жителей и вещественное воле – площадь,
- * занимаемую городом. Реализовать метод, вычисляющий плотность населения в
- * городе.  Основной класс страна имеет три поля типа город, вещественное поле –
- * площадь, не занятая городами и целое поле – число жителей, живущих не в этих
- * городах. Реализовать  метод, вычисляющий среднюю плотность населения в стране и
- * метод, вычисляющий не самый плотно заселенный город и не самый менее плотно
- * заселенный из трех городов.
- */
-
-class town{
+class question{
 private:
-    int population;
-    double square;
+    int count;
+    int mark;
 public:
     void set(){
-        cout << "input population: ";
-        cin >> population;
-        cout << "input square: ";
-        cin >> square;
+        cout << "input count of questionss about this theam: ";
+        cin >> count;
+        cout << "input mark of each questions: ";
+        cin >> mark;
     }
 
-    double density(){
-        return 1.0 * population / square;
+    double evgMark(){
+        return 1.0 * mark / count;
+    }
+
+    int getMark(){
+        return mark;
     }
 };
 
-class country{
+class exam{
 private:
-    double square;
-    int population;
-    town city1, city2, city3;
+    int countOfTheams;
+    double markToPass;
+    question mas[100];
 public:
 
-        double density(){
-        double avgD = city1.density() + city2.density() + city3.density();
-        avgD /= 3;
-        return (avgD + 1. * population / square) / 2;
+    void set(){
+        cout << "Input how many theams will be in exams: ";
+        cin >> countOfTheams;
+        cout << "input count and marks of questions of each theams:" << endl;
+        for ( int i = 0; i < countOfTheams; i++ ){
+            cout << i + 1 << ")";
+            mas[i].set();
+        }
+        cout << "Input mark to pass exam: ";
+        cin >> markToPass;
     }
 
-    void set(){
-        cout << "Set all of 3 town`s parametrs";
-        city1.set();
-        city2.set();
-        city3.set();
-        cout << "input population of other towns: ";
-        cin >> population;
-        cout << "input square of other towns: ";
-        cin >> square;
+    char isDone(){
+        double evgMark = 0;
+        for (int i =0; i < countOfTheams; i++)
+            evgMark += mas[i].getMark();
+        evgMark = evgMark * 1.0 / countOfTheams;
+        if (evgMark >= markToPass)
+            return 1;
+        return 0;
+
     }
 
 };
 
 int main()
 {
-    country Russia;
-    Russia.set();
-    cout << Russia.density();
+    exam Math;
+    Math.set();
+    if (Math.isDone())
+        cout << "Math was passed";
+    else
+        cout << "Math wasnt passed";
     return 0;
 }

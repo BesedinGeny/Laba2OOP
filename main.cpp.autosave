@@ -1,0 +1,72 @@
+#include <iostream>
+
+using namespace std;
+
+
+/*
+ * Город содержит целое поле – число жителей и вещественное воле – площадь,
+ * занимаемую городом. Реализовать метод, вычисляющий плотность населения в
+ * городе.  Основной класс страна имеет три поля типа город, вещественное поле –
+ * площадь, не занятая городами и целое поле – число жителей, живущих не в этих
+ * городах. Реализовать  метод, вычисляющий среднюю плотность населения в стране и
+ * метод, вычисляющий не самый плотно заселенный город и не самый менее плотно
+ * заселенный из трех городов.
+ */
+
+class question{
+private:
+    int count;
+    int mark;
+public:
+    void set(){
+        cout << "input count of questionss about this theam: ";
+        cin >> count;
+        cout << "input mark of each questions: ";
+        cin >> mark;
+    }
+
+    double evgMark(){
+        return 1.0 * mark / count;
+    }
+    
+    int getMark(){
+        return mark;
+    }
+};
+
+class exam{
+private:
+    int countOfTheams;
+    double markToPass;
+    question mas[100];
+public:
+
+    void set(){
+        cout << "Input how many theams will be in exams: ";
+        cin >> countOfTheams;
+        cout << "input count and marks of questions of each theams:" << endl;
+        for ( int i = 0; i < countOfTheams; i++ ){
+            cout << i + 1 << ")";
+            mas[i].set();
+        }
+        cout << "Input mark to pass exam: ";
+        cin >> markToPass;
+    }
+    
+    char isDone(){
+        double evgMark;
+        for (int i =0; i < countOfTheams; i++)
+            evgMark += mas[i].getMark();
+        evgMark = evgMark * 1.
+        
+    }
+
+};
+
+int main()
+{
+    country Russia;
+    Russia.set();
+    cout << Russia.density();
+    return 0;
+}
