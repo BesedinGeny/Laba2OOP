@@ -12,6 +12,7 @@ using namespace std;
  * метод, вычисляющий не самый плотно заселенный город и не самый менее плотно
  * заселенный из трех городов.
  */
+
 class town{
 private:
     int population;
@@ -20,7 +21,7 @@ public:
     void set(){
         cout << "input population: ";
         cin >> population;
-        cout << "input square";
+        cout << "input square: ";
         cin >> square;
     }
 
@@ -31,19 +32,34 @@ public:
 
 class country{
 private:
-    town city1, city2, city3;
     double square;
     int population;
+    town city1, city2, city3;
 public:
-    double density(){
+
+        double density(){
         double avgD = city1.density() + city2.density() + city3.density();
         avgD /= 3;
         return (avgD + 1. * population / square) / 2;
     }
+
+    void set(){
+        cout << "Set all of 3 town`s parametrs";
+        city1.set();
+        city2.set();
+        city3.set();
+        cout << "input population of other towns: ";
+        cin >> population;
+        cout << "input square of other towns: ";
+        cin >> square;
+    }
+
 };
 
 int main()
 {
-    cout << "Hello World!" << endl;
+    country Russia;
+    Russia.set();
+    cout << Russia.density();
     return 0;
 }
