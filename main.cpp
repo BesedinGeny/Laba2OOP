@@ -8,6 +8,10 @@ private:
     int count;
     int mark;
 public:
+    void init(int a, int b){
+        count = a;
+        mark = b;
+    }
     void set(){
         cout << "input count of questionss about this theam: ";
         cin >> count;
@@ -22,6 +26,9 @@ public:
     int getMark(){
         return mark;
     }
+    void display(){
+        cout << "Count of questions of this theam is " << count << " And mark for each of them is " << mark << endl;
+    }
 };
 
 class exam{
@@ -31,6 +38,10 @@ private:
     question mas[100];
 public:
 
+    void init(int a, double b){
+        countOfTheams = a;
+        markToPass = b;
+    }
     void set(){
         cout << "Input how many theams will be in exams: ";
         cin >> countOfTheams;
@@ -53,6 +64,9 @@ public:
         return 0;
 
     }
+    void display(){
+        cout << "Count of theams is " << countOfTheams << " and mark to pass this exam is " << markToPass << endl;
+    }
 
 };
 
@@ -60,6 +74,7 @@ int main()
 {
     exam Math;
     Math.set();
+    Math.display();
     if (Math.isDone())
         cout << "Math was passed";
     else
