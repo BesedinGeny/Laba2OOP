@@ -18,6 +18,10 @@ private:
     int population;
     double square;
 public:
+    void init(int a, double b){
+        population = a;
+        square = b;
+    }
     void set(){
         cout << "input population: ";
         cin >> population;
@@ -28,6 +32,18 @@ public:
     double density(){
         return 1.0 * population / square;
     }
+
+    void display(){
+        cout << "Population of this town is: " << population << " and square of it is: " << square << endl;
+    }
+
+    int getPopulation(){
+        return population;
+    }
+
+    double getSquare(){
+        return square;
+    }
 };
 
 class country{
@@ -37,7 +53,11 @@ private:
     town city1, city2, city3;
 public:
 
-        double density(){
+    void init(int a, double b){
+        population = a;
+        square = b;
+    }
+    double density(){
         double avgD = city1.density() + city2.density() + city3.density();
         avgD /= 3;
         return (avgD + 1. * population / square) / 2;
@@ -54,12 +74,21 @@ public:
         cin >> square;
     }
 
+    void display(){
+        cout << "Population of country is " << city1.getPopulation() + city2.getPopulation() + city3.getPopulation() + population << " And square of country is " << city1.getSquare() + city2.getSquare() + city3.getSquare() + square << endl;
+        city1.display();
+        city2.display();
+        city3.display();
+    }
+
+
 };
 
 int main()
 {
     country Russia;
     Russia.set();
+    Russia.display();
     cout << Russia.density();
     return 0;
 }
