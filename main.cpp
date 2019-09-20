@@ -72,9 +72,12 @@ public:
 
 int main()
 {
-    exam Math;
+    exam Math, RLang;
     Math.set();
     Math.display();
+    RLang.init(2, 3.1);
+    RLang.display();
+
     if (Math.isDone())
         cout << "Math was passed";
     else
